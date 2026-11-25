@@ -8,59 +8,42 @@ To write a python program for creating Chat using TCP Sockets Links.
  server
 4. Send and receive the message using the send function in socket.
 ## PROGRAM
-server.py
-```
-import socket
-
-s = socket.socket()
-
-s.bind(('localhost', 8000))
-
-s.listen(5)
-
-print("Waiting for client...")
-
-c, addr = s.accept()
-
-print("Connected with", addr)
-
-while True:
-    ClientMessage = c.recv(1024).decode()
-
-    print("Client > ", ClientMessage)
-
-    msg = input("Server > ")
-
-    c.send(msg.encode())
-```
-
+~~~
 client.py
-```
+
 import socket
-
-s = socket.socket()
-
-s.connect(('localhost', 8000))
-
+s=socket.socket()
+s.connect(('localhost',9300))
 while True:
-    msg = input("Client > ")
-
+    msg=input("Client > ")
     s.send(msg.encode())
-
-    print("Server > ", s.recv(1024).decode())
-devloped by: Saran Sadasivam
-ref no:212225040385
-
-```
-
-## OUPUT
+    print("Server > ",s.recv(1024).decode())
+~~~
+~~~
 server.py
 
-<img width="461" height="250" alt="image" src="https://github.com/user-attachments/assets/8fe7cc25-5aa9-4289-8638-c111e807c30b" />
+import socket
+s=socket.socket()
+s.bind(('localhost',9300))
+s.listen(5)
+c,addr=s.accept()
+while True:
+    ClientMessage=c.recv(1024).decode()
+    print("Client > ",ClientMessage)
+    msg=input("Server > ")
+    c.send(msg.encode())
+~~~
+## OUPUT
 
 client.py
 
-<img width="566" height="210" alt="image" src="https://github.com/user-attachments/assets/d1d3a5dd-3d97-401a-962a-aa440209d255" />
+<img width="1481" height="288" alt="564880597-1b99b52c-b9fb-48e6-b908-351e3e65f5f5" src="https://github.com/user-attachments/assets/e9fa9fc2-ba07-4ba5-98a1-6e28ac65545c" />
+
+
+server.py
+
+<img width="1483" height="284" alt="564880745-8ebd620d-c05b-4268-9fea-7881391b967d" src="https://github.com/user-attachments/assets/00fcb28f-b1e3-48e2-a87d-fd25436a094b" />
+
 
 
 ## RESULT
