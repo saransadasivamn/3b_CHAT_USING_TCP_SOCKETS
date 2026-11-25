@@ -8,32 +8,60 @@ To write a python program for creating Chat using TCP Sockets Links.
  server
 4. Send and receive the message using the send function in socket.
 ## PROGRAM
-
 server.py
-~~~
+```
 import socket
-s=socket.socket()
-s.bind(('localhost',8000))
+
+s = socket.socket()
+
+s.bind(('localhost', 8000))
+
 s.listen(5)
-c,addr=s.accept()
+
+print("Waiting for client...")
+
+c, addr = s.accept()
+
+print("Connected with", addr)
+
 while True:
-    ClientMessage=c.recv(1024).decode()
-    print("Client > ",ClientMessage)
-    msg=input("Server > ")
+    ClientMessage = c.recv(1024).decode()
+
+    print("Client > ", ClientMessage)
+
+    msg = input("Server > ")
+
     c.send(msg.encode())
-~~~~
+```
+
 client.py
-~~~
+```
 import socket
-s=socket.socket()
-s.connect(('localhost',8000))
+
+s = socket.socket()
+
+s.connect(('localhost', 8000))
+
 while True:
-    msg=input("Client > ")
+    msg = input("Client > ")
+
     s.send(msg.encode())
-    print("Server > ",s.recv(1024).decode())
-~~~
+
+    print("Server > ", s.recv(1024).decode())
+devloped by: Saran Sadasivam
+ref no:212225040385
+
+```
+
 ## OUPUT
-<img width="1225" height="305" alt="image" src="https://github.com/user-attachments/assets/ac816420-c0ab-4831-bcb5-3c62087f1bb9" />
+server.py
+
+<img width="461" height="250" alt="image" src="https://github.com/user-attachments/assets/8fe7cc25-5aa9-4289-8638-c111e807c30b" />
+
+client.py
+
+<img width="566" height="210" alt="image" src="https://github.com/user-attachments/assets/d1d3a5dd-3d97-401a-962a-aa440209d255" />
+
 
 ## RESULT
 Thus, the python program for creating Chat using TCP Sockets Links was successfully 
